@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import './assets/styles/typography.css';
+import Subscription from './components/Subscription';
+import TariffCard from './components/TariffCard';
+import TariffToggle from './components/TariffToggle';
 
 function App() {
   const [activeTariff, setActiveTariff] = useState(0);
@@ -16,9 +19,20 @@ function App() {
     { id: 3, name: 'Yearly' },
   ];
   return (
-    <div className="text-style-raleway-39-px-regular">
-      Hello!
-    </div>
+    <>
+      <Subscription />
+      <TariffCard
+        title="monthly"
+        description="At Infinity & Beyond you will find the best content about space."
+        list={list}
+        tariff="19,90"
+      />
+      <TariffToggle
+        setActiveTariff={setActiveTariff}
+        activeTariff={activeTariff}
+        tariffs={tariffs}
+      />
+    </>
   );
 }
 
