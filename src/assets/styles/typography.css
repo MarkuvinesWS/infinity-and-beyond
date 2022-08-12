@@ -17,6 +17,8 @@
   --color-roxo-70: rgba(136,51,255,1);
   --color-roxo-45: rgba(166,102,255,1);
   --color-roxo-20: rgba(210,179,255,1);
+  --border-gradient-default: linear-gradient(to bottom, var(--color-black-65), var(--color-black-95));
+  --border-gradient-active: linear-gradient(to bottom, var(--color-roxo-100), var(--color-black-95));
 }
 .text-style-raleway-shows-description {
   font-size:16px;
@@ -40,7 +42,7 @@
   font-weight:700;
   font-style:normal;
   text-decoration:none;
-  text-transform:none;
+  text-transform: uppercase;
 }
 .text-style-raleway-texts {
   font-size:20px;
