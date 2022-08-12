@@ -2,19 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-function ButtonSubscribe({ text }) {
+function ButtonSubscribe({ children }) {
   return (
     <StyledButton
       className="text-style-raleway-title-01"
       type="button"
     >
-      {text}
+      {children}
     </StyledButton>
   );
 }
 
 ButtonSubscribe.propTypes = {
-  text: PropTypes.string.isRequired,
+  children: PropTypes.string.isRequired,
 };
 
 export default ButtonSubscribe;
