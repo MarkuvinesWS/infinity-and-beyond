@@ -5,11 +5,13 @@ import PropTypes from 'prop-types';
 function FeatureCard({ src, title, description }) {
   const [active, setActive] = useState(false);
   return (
-    <StyledFeatureCard>
+    <StyledFeatureCard
+      active={active}
+      onMouseOver={() => setActive(true)}
+      onMouseLeave={() => setActive(false)}
+    >
       <StyledBorder
         active={active}
-        onMouseOver={() => setActive(true)}
-        onMouseLeave={() => setActive(false)}
       >
         <img className="feature-card__card-image" src={src} alt="space" />
       </StyledBorder>
@@ -32,6 +34,11 @@ const StyledFeatureCard = styled.div`
   display: flex;
   flex-flow: column nowrap;
   gap: 16px;
+  flex-grow: 1;
+  transform: scale(${({ active }) => (active ? '110%' : '100%')});
+  z-index: ${({ active }) => (active ? '10' : '0')} ;
+  transition: all ease .3s;
+  cursor: pointer;
   .feature-card__title {
     color: var(--color-black-10);
   }
@@ -48,7 +55,6 @@ const StyledBorder = styled.div`
   width: fit-content;
   border-radius: 20px;
   background: var(${({ active }) => (active ? '--border-gradient-active' : '--border-gradient-default')});
-  cursor: pointer;
 
   .feature-card__card-image {
     border-radius: 20px;
