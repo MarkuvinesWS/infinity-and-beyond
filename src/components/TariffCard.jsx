@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import TariffCardButton from './premitives/TariffCardButton';
@@ -8,23 +8,37 @@ function TariffCard({
   description,
   list,
   tariff,
+  index,
+  isRecommend,
+  activeTariff,
+  setActiveTariff,
 }) {
-  const [active, setActive] = useState(false);
+  function isActive() {
+    return index === activeTariff;
+  }
   return (
-    <StyledBorder active={active}>
-      <StyledTariffCard onClick={() => { setActive(!active); }}>
+    <StyledBorder active={isActive()}>
+      <StyledTariffCard active={isActive()} onClick={() => { setActiveTariff(index); }}>
         <h3 className="tariff-card__title text-style-raleway-titles-02">{title}</h3>
-        <div className={`tariff-card__line ${active ? 'tariff-card__line_active' : ''}`} />
+        <div className={`tariff-card__line ${isActive() ? 'tariff-card__line_active' : ''}`}>
+          {isRecommend
+            && (
+              <div className="tariff-card__recommended">
+                <img src="recommended.svg" alt="star" />
+                <span className="text-style-raleway-12-px-regular">Recommended</span>
+              </div>
+            )}
+        </div>
         <p className="tariff-card__description text-style-raleway-texts">{description}</p>
         <ul className="tariff-card__list text-style-raleway-16-px-regular">
           {list.map((listItem) => <li className="tariff-card__list-item">{listItem}</li>)}
         </ul>
         <p className="tariff-card__price-container text-style-raleway-shows-title">
-          <span className={`tariff-card__price text-style-raleway-title-03 ${active ? 'tariff-card__price_active' : ''}`}>{tariff}</span>
+          <span className={`tariff-card__price text-style-raleway-title-03 ${isActive() ? 'tariff-card__price_active' : ''}`}>{tariff}</span>
           /month
         </p>
         <div className="tariff-card__button-container">
-          <TariffCardButton active={active}>
+          <TariffCardButton active={isActive()}>
             Sign&nbsp;Up&nbsp;Now!
           </TariffCardButton>
         </div>
@@ -38,6 +52,10 @@ TariffCard.propTypes = {
   description: PropTypes.string.isRequired,
   list: PropTypes.arrayOf(PropTypes.string).isRequired,
   tariff: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
+  activeTariff: PropTypes.number.isRequired,
+  setActiveTariff: PropTypes.func.isRequired,
+  isRecommend: PropTypes.bool.isRequired,
 };
 
 export default TariffCard;
@@ -65,7 +83,21 @@ const StyledTariffCard = styled.div`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   .tariff-card__line {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-top: 1px solid var(--color-black-65);
+    .tariff-card__recommended {
+      display: flex;
+      gap: 6px;
+      padding: 4px 24px;
+      border-radius: 62px;
+      background-color: var(${({ active }) => (active ? '--color-roxo-100' : '--color-black-65')});
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
   .tariff-card__line_active {
     border-top: 1px solid var(--color-roxo-100);
