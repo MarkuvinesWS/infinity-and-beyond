@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-function ContentCard({ src, tagText }) {
+function ContentCard({
+  src,
+  tagText,
+  title,
+  subTitle,
+}) {
   const [active, setActive] = useState(false);
   return (
     <StyledContentCard
@@ -18,6 +23,8 @@ function ContentCard({ src, tagText }) {
         </div>
         {active ? <img className="content-card__play" src="./image/playButton.png" alt="play" /> : ''}
       </StyledBorder>
+      <h3 className="content-card__title text-style-raleway-shows-title">{title}</h3>
+      <span className=" content-card__sub-title text-style-raleway-16-px-regular">{subTitle}</span>
     </StyledContentCard>
   );
 }
@@ -25,6 +32,8 @@ function ContentCard({ src, tagText }) {
 ContentCard.propTypes = {
   src: PropTypes.string.isRequired,
   tagText: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  subTitle: PropTypes.string.isRequired,
 };
 
 export default ContentCard;
@@ -38,6 +47,12 @@ const StyledContentCard = styled.div`
   z-index: ${({ active }) => (active ? '10' : '0')} ;
   transition: all ease .3s;
   cursor: pointer;
+  .content-card__title {
+    color: var(--color-black-10);
+  }
+  .content-card__sub-title {
+    color: var(--color-black-40);
+  }
 `;
 
 const StyledBorder = styled.div`
@@ -50,6 +65,8 @@ const StyledBorder = styled.div`
   border-radius: 20px;
   background: var(${({ active }) => (active ? '--border-gradient-active' : '--border-gradient-default')});
   .content-card__image {
+    object-fit: cover;
+    object-position: center;
     border-radius: 20px;
     width: 295px;
     height: 398px;
