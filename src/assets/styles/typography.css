@@ -20,6 +20,7 @@
   --color-roxo-20: rgba(210,179,255,1);
   --border-gradient-default: linear-gradient(to bottom, var(--color-black-65), var(--color-black-95));
   --border-gradient-active: linear-gradient(to bottom, var(--color-roxo-100), var(--color-black-95));
+  --faq-gradient-active: linear-gradient(180deg, rgba(245, 245, 245, 0.1) 60.24%, rgba(245, 245, 245, 0) 145.12%);
 }
 .text-style-raleway-shows-description {
   font-size:16px;
