@@ -18,7 +18,7 @@ function TariffCard({
   }
   return (
     <StyledBorder active={isActive()}>
-      <StyledTariffCard active={isActive()} onClick={() => { setActiveTariff(index); }}>
+      <StyledTariffCard className="tariff-card" active={isActive()} onClick={() => { setActiveTariff(index); }}>
         <h3 className="tariff-card__title text-style-raleway-titles-02">{title}</h3>
         <div className={`tariff-card__line ${isActive() ? 'tariff-card__line_active' : ''}`}>
           {isRecommend
@@ -62,7 +62,6 @@ export default TariffCard;
 const StyledBorder = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
   padding: 3px;
   width: fit-content;
   border-radius: 20px;
@@ -107,6 +106,7 @@ const StyledTariffCard = styled.div`
     text-align: left;
     display: flex;
     flex-flow: column nowrap;
+    flex-grow: 1;
     gap: 10px;
   }
   .tariff-card__price-container {
