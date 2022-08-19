@@ -44,7 +44,7 @@ function TariffsBlock({ tariffs, activeTariff, setActiveTariff }) {
 TariffsBlock.propTypes = {
   tariffs: PropTypes
     .arrayOf(PropTypes.objectOf(PropTypes
-      .oneOfType([PropTypes.string, PropTypes.number, PropTypes
+      .oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool, PropTypes
         .arrayOf(PropTypes.string)]))).isRequired,
   activeTariff: PropTypes.number.isRequired,
   setActiveTariff: PropTypes.func.isRequired,
