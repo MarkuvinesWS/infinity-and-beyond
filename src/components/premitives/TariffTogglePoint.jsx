@@ -7,6 +7,7 @@ function TariffTogglePoint({
   children,
   activeTariff,
   onClick,
+  isRecommend,
 }) {
   return (
     <StyledTariff
@@ -16,6 +17,13 @@ function TariffTogglePoint({
       activeTariff={activeTariff}
     >
       {children}
+      {isRecommend
+        && (
+          <div className="tariff-point-recommend">
+            <img src="recommended.svg" alt="star" />
+            <span className="text-style-raleway-12-px-regular">Recommended</span>
+          </div>
+        )}
     </StyledTariff>
   );
 }
@@ -25,6 +33,7 @@ TariffTogglePoint.propTypes = {
   activeTariff: PropTypes.number.isRequired,
   index: PropTypes.number.isRequired,
   onClick: PropTypes.func.isRequired,
+  isRecommend: PropTypes.bool.isRequired,
 };
 
 export default TariffTogglePoint;
@@ -38,4 +47,13 @@ const StyledTariff = styled.div`
   cursor: pointer;
   text-transform: uppercase;
   border-radius: 69px;
+  .tariff-point-recommend {
+    pointer-events: none;
+    display: flex;
+    gap: 8px;
+    position: absolute;
+    left: 50%;
+    bottom: -16px;
+    transform: translateX(-50%) translateY(100%);
+  }
 `;
