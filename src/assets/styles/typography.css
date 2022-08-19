@@ -38,6 +38,28 @@
   text-decoration:none;
   text-transform:none;
 }
+.text-style-raleway-title-14 {
+  font-family: 'Raleway', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+.text-style-raleway-title-28 {
+  font-family: 'Raleway', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 33px;
+}
+.text-style-raleway-title-36 {
+  font-family: 'Raleway', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 42px;
+}
 .text-style-raleway-titles-02 {
   font-size:32px;
   font-family: 'Raleway', sans-serif;
@@ -45,6 +67,15 @@
   font-style:normal;
   text-decoration:none;
   text-transform: uppercase;
+}
+.form-link-text {
+  font-family: 'Raleway', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  text-decoration-line: underline;
 }
 .text-style-raleway-texts {
   font-size:20px;
