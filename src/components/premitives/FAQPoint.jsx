@@ -32,11 +32,11 @@ const StyledFaqPoint = styled.div`
   border: 1px solid var(--color-black-25);
   border-radius: ${({ active }) => (active ? '32' : '76')}px;
   color: var(--color-black-10);
-  background-color:  var(${({ active }) => (active ? '--faq-gradient-active' : '--color-black-95')});
+  background-color:  var(${({ active }) => (active ? '--faq-gradient-active' : '')});
   cursor: pointer;
   &:hover {
     background: rgba(245, 245, 245, 0.1);
-    transition: background-color ease .2s;
+    transition: max-height ease .2s;
   }
   .title-container {
     display: flex;
