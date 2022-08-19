@@ -7,8 +7,8 @@ function Subscription() {
   return (
     <StyledSubscription>
       <div className="subscription__header text-style-raleway-shows-title">
-        <span>Sign Up</span>
-        and watch this documentary and other titles!
+        <span className="text-style-raleway-titles-02">Sign Up</span>
+        &nbsp;and watch this documentary and other titles!
       </div>
       <div className="subscription__main">
         <Input placeholder="example@email.com" />
