@@ -1,38 +1,14 @@
-import React, { useState } from 'react';
-import './App.css';
+import React from 'react';
 import './assets/styles/typography.css';
-import Subscription from './components/Subscription';
-import TariffCard from './components/TariffCard';
-import TariffToggle from './components/TariffToggle';
+import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import routes from './router/routes';
 
 function App() {
-  const [activeTariff, setActiveTariff] = useState(0);
-  const list = [
-    ' + Enjoy on all your devices',
-    ' + Watch on two screens',
-    ' + Watch anywhere you want',
-    ' + Resolution adapted to your device',
-  ];
-  const tariffs = [
-    { id: 1, name: 'monthly' },
-    { id: 2, name: '6 months' },
-    { id: 3, name: 'Yearly' },
-  ];
   return (
-    <>
-      <Subscription />
-      <TariffCard
-        title="monthly"
-        description="At Infinity & Beyond you will find the best content about space."
-        list={list}
-        tariff="19,90"
-      />
-      <TariffToggle
-        setActiveTariff={setActiveTariff}
-        activeTariff={activeTariff}
-        tariffs={tariffs}
-      />
-    </>
+    <Routes>
+      {routes.map(({ path, component }) => <Route path={path} element={component} />)}
+    </Routes>
   );
 }
 
