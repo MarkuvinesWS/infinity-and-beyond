@@ -3,13 +3,18 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import TariffTogglePoint from './premitives/TariffTogglePoint';
 
-function TariffToggle({ tariffs, activeTariff, setActiveTariff }) {
+function TariffToggle({
+  tariffs,
+  activeTariff,
+  setActiveTariff,
+}) {
   return (
     <StyledTariffToggle>
       <div className="tariffs-container">
-        {tariffs.map(({ id, name }, index) => (
+        {tariffs.map(({ id, name, isRecommend }, index) => (
           <TariffTogglePoint
             key={id}
+            isRecommend={isRecommend}
             onClick={setActiveTariff}
             index={index}
             activeTariff={activeTariff}
@@ -25,7 +30,7 @@ function TariffToggle({ tariffs, activeTariff, setActiveTariff }) {
 
 TariffToggle.propTypes = {
   tariffs: PropTypes.arrayOf(PropTypes.objectOf(PropTypes
-    .oneOfType([PropTypes.string, PropTypes.number])))
+    .oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool])))
     .isRequired,
   activeTariff: PropTypes.number.isRequired,
   setActiveTariff: PropTypes.func.isRequired,
