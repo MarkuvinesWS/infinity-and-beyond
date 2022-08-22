@@ -2,24 +2,33 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-function Input({ placeholder, border }) {
+function Input({
+  placeholder,
+  border,
+  borderFocus,
+  type,
+}) {
   return (
     <StyledInput
       border={border}
+      borderFocus={borderFocus}
       placeholder={placeholder}
       className="text-style-raleway-20-px-regular"
-      type="email"
+      type={type}
     />
   );
 }
 
 Input.defaultProps = {
   border: null,
+  borderFocus: null,
 };
 
 Input.propTypes = {
   placeholder: PropTypes.string.isRequired,
   border: PropTypes.string,
+  borderFocus: PropTypes.string,
+  type: PropTypes.string.isRequired,
 };
 
 export default Input;
@@ -36,7 +45,7 @@ const StyledInput = styled.input`
 
   &:focus {
     outline: 2px solid var(--color-roxo-45);
-
+    outline:  ${({ borderFocus }) => (borderFocus ? `2px solid var(${borderFocus})` : 'none')} ;
   }
 
   &:placeholder-shown {
