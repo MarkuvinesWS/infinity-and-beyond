@@ -3,13 +3,12 @@ import styled from 'styled-components';
 import Input from '../components/premitives/Input';
 import PasswordInput from '../components/premitives/PasswordInput';
 import ButtonSignIn from '../components/premitives/ButtonSignIn';
+import DefaultLayout from '../layouts/DefaultLayout';
 
 function LoginPage() {
   return (
-    <StyledLoginPage>
-      <div className="login-page-gradient" />
-      <div className="_landing_container login-page-container">
-        <img className="login-page-logo" src="./icons/logo.svg" alt="logo" />
+    <DefaultLayout>
+      <StyledLoginPage className="landing_container login-page-container">
         <h2 className="text-style-raleway-title-03 login-page-title">Sign In</h2>
         <p className="text-style-raleway-20-px-regular login-page-subtitle">
           Hello, where have you been?
@@ -37,54 +36,18 @@ function LoginPage() {
           New to Infinity & Beyond?&nbsp;
           <a href="/" className="login-page-signup-offer-link form-link-text">Sign Up Here!</a>
         </span>
-      </div>
-      <footer className="login-page-footer">
-        <div className="login-page-footer-container">
-          <div className="login-page-site-map">
-            <a className="login-page-footer-link text-style-raleway-16-px-regular" href="/">Contact Us</a>
-            <a className="login-page-footer-link text-style-raleway-16-px-regular" href="/">Terms of Use</a>
-            <a className="login-page-footer-link text-style-raleway-16-px-regular" href="/">Privacy</a>
-            <a className="login-page-footer-link text-style-raleway-16-px-regular" href="/">Need Help?</a>
-            <select className="footer-select">
-              <option className="footer-option" value="en">English</option>
-              <option className="footer-option" value="ru">Russian</option>
-            </select>
-          </div>
-          <div className="login-page-footer-copyright text-style-raleway-12-px-regular">
-            © 2022 Infinity & Beyond, LLC. All rights reserved to Rodrigo Oliveira Santos.
-          </div>
-        </div>
-      </footer>
-    </StyledLoginPage>
+      </StyledLoginPage>
+    </DefaultLayout>
   );
 }
 
 export default LoginPage;
 
 const StyledLoginPage = styled.div`
-  height: 100vh;
+  padding: 136px 0 96px 0;
   display: flex;
   flex-flow: column nowrap;
-  justify-content: space-between;
-  position: relative;
-  background: linear-gradient(117.98deg, #1A1A1A 14.77%, #1D1056 117.86%);
-  .login-page-gradient {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(180deg, #1A1A1A 0%, rgba(26, 26, 26, 0) 100%);
-  }
-  .login-page-container {
-    padding: 48px 0 96px 0;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-  }
-  .login-page-logo {
-    margin: 0 0 136px 0;
-  }
+  align-items: center;
   .login-page-title {
     margin: 0 0 24px 0;
     text-transform: uppercase;
