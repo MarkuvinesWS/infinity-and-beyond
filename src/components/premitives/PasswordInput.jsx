@@ -1,18 +1,28 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Input from './Input';
 
-function PasswordInput() {
+function PasswordInput({ className, placeholder }) {
   const [isVisible, setIsVisible] = useState(false);
   return (
     <StyledInputContainer>
-      <Input type={isVisible ? 'text' : 'password'} border="--color-black-65" borderFocus="--color-black-10" placeholder="Password" />
+      <Input className={className} type={isVisible ? 'text' : 'password'} border="--color-black-65" borderFocus="--color-black-10" placeholder={placeholder} />
       <button type="button" onClick={() => setIsVisible((prev) => !prev)} className="input-container-img input-container-img_visible">
-        {isVisible ? <img src="./icons/pass-visible.svg" alt="visible" /> : <img src="./icons/pass-invisible.svg" alt="invisible" />}
+        {isVisible ? <img src="/icons/pass-visible.svg" alt="visible" /> : <img src="/icons/pass-invisible.svg" alt="invisible" />}
       </button>
     </StyledInputContainer>
   );
 }
+
+PasswordInput.defaultProps = {
+  className: '',
+};
+
+PasswordInput.propTypes = {
+  className: PropTypes.string,
+  placeholder: PropTypes.string.isRequired,
+};
 
 export default PasswordInput;
 
