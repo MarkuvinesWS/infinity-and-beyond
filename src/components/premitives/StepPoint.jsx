@@ -1,20 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { setActiveStep } from '../../store/signUpSteps';
 
 function StepPoint({
   index,
   children,
-  activePoint,
-  onClick,
   isRecommend,
 }) {
+  const { activeStep } = useSelector((state) => state.steps);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
     <StyledStepPoint
-      onClick={() => onClick(index)}
+      onClick={() => {
+        dispatch(setActiveStep(index));
+        navigate(`/sign-up/step${index}`);
+      }}
       index={index}
-      className={activePoint === index ? 'text-style-raleway-title-20-800' : 'text-style-raleway-20-px-regular'}
-      activeTariff={activePoint}
+      className={activeStep === index ? 'text-style-raleway-title-20-800' : 'text-style-raleway-20-px-regular'}
+      activeTariff={activeStep}
     >
       {children}
       {isRecommend
@@ -33,9 +40,7 @@ StepPoint.defaultProps = {
 };
 StepPoint.propTypes = {
   children: PropTypes.string.isRequired,
-  activePoint: PropTypes.number.isRequired,
   index: PropTypes.number.isRequired,
-  onClick: PropTypes.func.isRequired,
   isRecommend: PropTypes.bool,
 };
 
