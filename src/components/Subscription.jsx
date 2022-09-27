@@ -11,7 +11,7 @@ function Subscription() {
         &nbsp;and watch this documentary and other titles!
       </div>
       <div className="subscription__main">
-        <Input placeholder="example@email.com" />
+        <Input placeholder="example@email.com" borderFocus="--color-roxo-45" />
         <ButtonSubscribe>
           Sign&nbsp;Up&nbsp;Now!
         </ButtonSubscribe>
