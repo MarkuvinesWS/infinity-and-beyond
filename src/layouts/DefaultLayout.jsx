@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 function DefaultLayout({ children }) {
   return (
     <StyledDefaultLayout>
-      <img className="default-layout-logo" src="./icons/logo.svg" alt="logo" />
+      <img className="default-layout-logo" src="/icons/logo.svg" alt="logo" />
       <div className="_container default-layout-container">
         {children}
       </div>
