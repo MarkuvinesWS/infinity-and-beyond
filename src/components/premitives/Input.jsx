@@ -7,13 +7,14 @@ function Input({
   border,
   borderFocus,
   type,
+  className,
 }) {
   return (
     <StyledInput
       border={border}
       borderFocus={borderFocus}
       placeholder={placeholder}
-      className="text-style-raleway-20-px-regular"
+      className={`text-style-raleway-20-px-regular ${className}`}
       type={type}
     />
   );
@@ -22,6 +23,7 @@ function Input({
 Input.defaultProps = {
   border: null,
   borderFocus: null,
+  className: '',
 };
 
 Input.propTypes = {
@@ -29,6 +31,7 @@ Input.propTypes = {
   border: PropTypes.string,
   borderFocus: PropTypes.string,
   type: PropTypes.string.isRequired,
+  className: PropTypes.string,
 };
 
 export default Input;
