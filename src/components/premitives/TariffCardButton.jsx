@@ -1,10 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { setActiveStep } from '../../store/signUpSteps';
 
 function TariffCardButton({ children, active }) {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   return (
     <StyledButton
+      onClick={() => {
+        navigate('/sign-up/step2');
+        dispatch(setActiveStep(2));
+      }}
       active={active}
       className="text-style-raleway-title-01"
       type="button"
