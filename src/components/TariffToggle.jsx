@@ -1,23 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import TariffTogglePoint from './premitives/TariffTogglePoint';
+import { setActiveTariff } from '../store/tariffs';
 
-function TariffToggle({
-  tariffs,
-  activeTariff,
-  setActiveTariff,
-}) {
+function TariffToggle() {
+  const { tariffsList } = useSelector((state) => state.tariffs);
+  const dispatch = useDispatch();
   return (
     <StyledTariffToggle>
       <div className="tariffs-container">
-        {tariffs.map(({ id, name, isRecommend }, index) => (
+        {tariffsList.map(({ id, name, isRecommend }, index) => (
           <TariffTogglePoint
             key={id}
             isRecommend={isRecommend}
-            onClick={setActiveTariff}
+            onClick={() => dispatch(setActiveTariff(index))}
             index={index}
-            activeTariff={activeTariff}
             className="tariff text-style-raleway-20-px-regular"
           >
             {name}
@@ -27,14 +25,6 @@ function TariffToggle({
     </StyledTariffToggle>
   );
 }
-
-TariffToggle.propTypes = {
-  tariffs: PropTypes.arrayOf(PropTypes.objectOf(PropTypes
-    .oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool])))
-    .isRequired,
-  activeTariff: PropTypes.number.isRequired,
-  setActiveTariff: PropTypes.func.isRequired,
-};
 
 export default TariffToggle;
 

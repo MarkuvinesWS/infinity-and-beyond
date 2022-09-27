@@ -1,14 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
 function TariffTogglePoint({
   index,
   children,
-  activeTariff,
   onClick,
   isRecommend,
 }) {
+  const { activeTariff } = useSelector((state) => state.tariffs);
   return (
     <StyledTariff
       onClick={() => onClick(index)}
@@ -30,7 +31,7 @@ function TariffTogglePoint({
 
 TariffTogglePoint.propTypes = {
   children: PropTypes.string.isRequired,
-  activeTariff: PropTypes.number.isRequired,
+  // activeTariff: PropTypes.number.isRequired,
   index: PropTypes.number.isRequired,
   onClick: PropTypes.func.isRequired,
   isRecommend: PropTypes.bool.isRequired,

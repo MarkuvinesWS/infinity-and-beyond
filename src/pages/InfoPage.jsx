@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Subscription from '../components/Subscription';
@@ -31,53 +31,6 @@ const features = [
     description: 'After a year of living on “Mars” the lines between reality and simulation blur. Following a crew of 6 led by a female physicist, RED HEAVEN takes viewers inside a year-long NASA psychological experiment',
   },
 ];
-const tariffs = [
-  {
-    id: 1,
-    name: 'monthly',
-    text: '',
-    price: '$19,90',
-    isRecommend: false,
-    list: [
-      ' + Enjoy on all your devices',
-      ' + Watch on two screens',
-      ' + Watch anywhere you want',
-      ' + Resolution adapted to your device',
-    ],
-  },
-  {
-    id: 2,
-    name: '6 months',
-    text: 'At Infinity & Beyond you will find the best content about space.',
-    price: '$18,90',
-    isRecommend: true,
-    list: [
-      '+ Enjoy on all your devices',
-      '+ Watch on multiple screens',
-      '+ Watch wherever you want',
-      '+ Resolution adapted to your device',
-      '+ High resolution and 4k quality',
-      '+ Create as many profiles as you want',
-      '+ Download and watch offline',
-    ],
-  },
-  {
-    id: 3,
-    name: 'Yearly',
-    text: 'At Infinity & Beyond you will find the best content about space.',
-    price: '$17,90',
-    isRecommend: false,
-    list: [
-      '+ Enjoy on all your devices',
-      '+ Watch on multiple screens',
-      '+ Watch wherever you want',
-      '+ Resolution adapted to your device',
-      '+ High resolution and 4k quality',
-      '+ Create as many profiles as you want',
-      '+ Download and watch offline',
-    ],
-  },
-];
 const contentCards = [
   {
     id: 1, src: './image/content1.jpg', tagText: 'Original Infinity & Beyond ', title: 'Life As An Astronaut', subText: 'Click to see an exclusive trailer',
@@ -107,7 +60,6 @@ const faqs = [
 ];
 
 function InfoPage() {
-  const [activeTariff, setActiveTariff] = useState(0);
   return (
     <StyledInfoPage>
       <StyledHeader>
@@ -117,7 +69,7 @@ function InfoPage() {
             <Link to="/login" className="text-style-raleway-13-px-regular">LOGIN</Link>
           </ButtonDefault>
           <ButtonSignUp>
-            <span className="text-style-raleway-title-14">Sign&nbsp;Up</span>
+            <Link to="/sign-up" className="text-style-raleway-title-14">Sign&nbsp;Up</Link>
           </ButtonSignUp>
         </div>
       </StyledHeader>
@@ -153,11 +105,7 @@ function InfoPage() {
             <p className="text-style-raleway-texts tariffs-sub-title">
               Discover our plans and choose the best option for you to enjoy our content.
             </p>
-            <TariffsBlock
-              setActiveTariff={setActiveTariff}
-              activeTariff={activeTariff}
-              tariffs={tariffs}
-            />
+            <TariffsBlock />
             <p className="text-style-raleway-16-px-regular tariffs-bottom">
               *See more information about payment plans&nbsp;
               <a className="tariffs-link" href="/">clicking here</a>

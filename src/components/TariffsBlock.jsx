@@ -1,19 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import TariffToggle from './TariffToggle';
 import TariffCard from './TariffCard';
 
-function TariffsBlock({ tariffs, activeTariff, setActiveTariff }) {
+function TariffsBlock() {
+  const { tariffsList } = useSelector((state) => state.tariffs);
   return (
     <StyledTariffsBlock>
-      <TariffToggle
-        setActiveTariff={setActiveTariff}
-        activeTariff={activeTariff}
-        tariffs={tariffs}
-      />
+      <TariffToggle />
       <StyledCardsContainer>
-        {tariffs.map((
+        {tariffsList.map((
           {
             id,
             name,
@@ -25,8 +22,6 @@ function TariffsBlock({ tariffs, activeTariff, setActiveTariff }) {
           index,
         ) => (
           <TariffCard
-            setActiveTariff={setActiveTariff}
-            activeTariff={activeTariff}
             index={index}
             key={id}
             isRecommend={isRecommend}
@@ -40,15 +35,6 @@ function TariffsBlock({ tariffs, activeTariff, setActiveTariff }) {
     </StyledTariffsBlock>
   );
 }
-
-TariffsBlock.propTypes = {
-  tariffs: PropTypes
-    .arrayOf(PropTypes.objectOf(PropTypes
-      .oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool, PropTypes
-        .arrayOf(PropTypes.string)]))).isRequired,
-  activeTariff: PropTypes.number.isRequired,
-  setActiveTariff: PropTypes.func.isRequired,
-};
 
 export default TariffsBlock;
 

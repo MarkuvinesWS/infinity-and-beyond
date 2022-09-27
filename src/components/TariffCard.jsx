@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import TariffCardButton from './premitives/TariffCardButton';
+import { setActiveTariff } from '../store/tariffs';
 
 function TariffCard({
   title,
@@ -10,21 +12,21 @@ function TariffCard({
   tariff,
   index,
   isRecommend,
-  activeTariff,
-  setActiveTariff,
 }) {
+  const { activeTariff } = useSelector((state) => state.tariffs);
+  const dispatch = useDispatch();
   function isActive() {
     return index === activeTariff;
   }
   return (
     <StyledBorder active={isActive()}>
-      <StyledTariffCard className="tariff-card" active={isActive()} onClick={() => { setActiveTariff(index); }}>
+      <StyledTariffCard className="tariff-card" active={isActive()} onClick={() => { dispatch(setActiveTariff(index)); }}>
         <h3 className="tariff-card__title text-style-raleway-titles-02">{title}</h3>
         <div className={`tariff-card__line ${isActive() ? 'tariff-card__line_active' : ''}`}>
           {isRecommend
             && (
               <div className="tariff-card__recommended">
-                <img src="recommended.svg" alt="star" />
+                <img src="/recommended.svg" alt="star" />
                 <span className="text-style-raleway-12-px-regular">Recommended</span>
               </div>
             )}
@@ -53,8 +55,6 @@ TariffCard.propTypes = {
   list: PropTypes.arrayOf(PropTypes.string).isRequired,
   tariff: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
-  activeTariff: PropTypes.number.isRequired,
-  setActiveTariff: PropTypes.func.isRequired,
   isRecommend: PropTypes.bool.isRequired,
 };
 
