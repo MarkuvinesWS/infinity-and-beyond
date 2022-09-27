@@ -1,17 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import StepPoint from './StepPoint';
+import config from '../../config';
 
-function StepsToggle({ steps, onClick, activePoint }) {
+function StepsToggle({
+  className,
+}) {
+  const {
+    activeStep,
+  } = useSelector((state) => state.steps);
   return (
-    <StyledStepsToggle>
+    <StyledStepsToggle className={className}>
       <div className="steps-container">
-        {steps.map(({ id, text }) => (
+        {config.registerSteps.map(({
+          id,
+          text,
+        }) => (
           <StepPoint
-            onClick={onClick}
             index={id}
-            activePoint={activePoint}
+            activePoint={activeStep}
           >
             {text}
           </StepPoint>
@@ -22,10 +31,7 @@ function StepsToggle({ steps, onClick, activePoint }) {
 }
 
 StepsToggle.propTypes = {
-  steps: PropTypes.arrayOf(PropTypes
-    .objectOf(PropTypes.oneOfType([PropTypes.number, PropTypes.string]))).isRequired,
-  onClick: PropTypes.func.isRequired,
-  activePoint: PropTypes.number.isRequired,
+  className: PropTypes.string.isRequired,
 };
 
 export default StepsToggle;
@@ -35,9 +41,14 @@ const StyledStepsToggle = styled.div`
   max-width: fit-content;
   background-color: var(--color-black-95-06);
   border-radius: 69px;
+
   .steps-container {
     width: 670px;
     display: flex;
     flex-flow: row nowrap;
+  }
+
+  .steps-link {
+    text-decoration: none;
   }
 `;
