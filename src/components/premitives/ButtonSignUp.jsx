@@ -2,16 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-function ButtonSignUp({ children }) {
+function ButtonSignUp({ stepHandler, children }) {
   return (
-    <StyledButtonDefault type="button">
+    <StyledButtonDefault onClick={stepHandler} type="button">
       {children}
     </StyledButtonDefault>
   );
 }
 
+ButtonSignUp.defaultProps = {
+  stepHandler: () => {},
+};
+
 ButtonSignUp.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.element.isRequired,
+  stepHandler: PropTypes.func,
 };
 
 export default ButtonSignUp;
