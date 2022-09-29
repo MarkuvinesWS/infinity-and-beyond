@@ -1,19 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Route, Routes } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import SingUpLayout from '../layouts/SingUpLayout';
 
-function SingUpPage({ steps }) {
+function SingUpPage() {
   return (
     <SingUpLayout>
-      <Routes>
-        {steps.map(({ path, component }) => <Route path={path} element={component} />)}
-      </Routes>
+      <Outlet />
     </SingUpLayout>
   );
 }
-SingUpPage.propTypes = {
-  // eslint-disable-next-line max-len
-  steps: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.element]))).isRequired,
-};
 export default SingUpPage;
