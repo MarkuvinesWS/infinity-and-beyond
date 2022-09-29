@@ -231,3 +231,12 @@
   text-decoration:none;
   text-transform:none;
 }
+.profile-name {
+  font-family: 'Raleway', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+  color: var(--color-black-65);
+}
