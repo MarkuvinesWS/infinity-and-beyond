@@ -4,8 +4,9 @@ import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setActiveStep } from '../../store/signUpSteps';
+import { setActiveTariff } from '../../store/signUpForm';
 
-function TariffCardButton({ children, active }) {
+function TariffCardButton({ children, active, currentTariffID }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   return (
@@ -13,6 +14,7 @@ function TariffCardButton({ children, active }) {
       onClick={() => {
         navigate('/sign-up/step2');
         dispatch(setActiveStep(2));
+        dispatch(setActiveTariff(currentTariffID));
       }}
       active={active}
       className="text-style-raleway-title-01"
@@ -26,6 +28,7 @@ function TariffCardButton({ children, active }) {
 TariffCardButton.propTypes = {
   children: PropTypes.string.isRequired,
   active: PropTypes.bool.isRequired,
+  currentTariffID: PropTypes.number.isRequired,
 };
 
 export default TariffCardButton;

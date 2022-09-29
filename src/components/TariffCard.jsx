@@ -40,7 +40,7 @@ function TariffCard({
           /month
         </p>
         <div className="tariff-card__button-container">
-          <TariffCardButton active={isActive()}>
+          <TariffCardButton currentTariffID={index} active={isActive()}>
             Sign&nbsp;Up&nbsp;Now!
           </TariffCardButton>
         </div>
