@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 
 function Input({
   placeholder,
@@ -8,9 +9,22 @@ function Input({
   borderFocus,
   type,
   className,
+  action,
+  setPasswordCallback,
 }) {
+  const [value, setValue] = useState();
+  const dispatch = useDispatch();
   return (
     <StyledInput
+      onChange={(e) => {
+        setValue(e.target.value);
+        setPasswordCallback(e.target.value);
+        if (!action) {
+          return;
+        }
+        dispatch(action(e.target.value));
+      }}
+      value={value}
       border={border}
       borderFocus={borderFocus}
       placeholder={placeholder}
@@ -24,6 +38,7 @@ Input.defaultProps = {
   border: null,
   borderFocus: null,
   className: '',
+  setPasswordCallback: () => {},
 };
 
 Input.propTypes = {
@@ -32,6 +47,8 @@ Input.propTypes = {
   borderFocus: PropTypes.string,
   type: PropTypes.string.isRequired,
   className: PropTypes.string,
+  action: PropTypes.func.isRequired,
+  setPasswordCallback: PropTypes.func,
 };
 
 export default Input;
